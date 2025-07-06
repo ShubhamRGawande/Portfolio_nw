@@ -4,39 +4,61 @@
 {% block content %}
 <section id="projects" class="py-5 mt-5">
     <div class="container">
-        <h2 class="text-center mb-4">My Projects</h2>
-        <div class="row">
+        <h2 class="text-center mb-4 fw-bold">
+            💻 My <span class="text-primary">Projects</span>
+        </h2>
+        <p class="text-center text-muted mb-5">
+            Here are some of the projects I’ve built to strengthen my skills in Full Stack Development.
+        </p>
+
+        <div class="row g-4">
             {% for project in projects %}
-            <div class="col-md-6 mb-4">
-                <div class="card h-100 shadow">
-                    {% if project.image %}
-                    <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 position-relative">
+                    <!-- Featured badge -->
+                    {% if project.featured %}
+                    <span class="badge bg-warning text-dark position-absolute m-2" style="top: 0; right: 0;">
+                        ⭐ Featured
+                    </span>
                     {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ project.title }}</h5>
-                        <p class="card-text">{{ project.description }}</p>
+
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" class="card-img-top rounded-top-4" alt="{{ project.title }}">
+                    {% endif %}
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-semibold text-center">{{ project.title }}</h5>
+                        <p class="card-text text-muted small text-center">{{ project.description|truncatechars:120 }}</p>
+
                         {% if project.technologies.all %}
-                        <p>
-                            <strong>Technologies:</strong>
+                        <div class="mt-3 text-center">
+                            <strong>🛠 Tech Stack:</strong><br>
                             {% for tech in project.technologies.all %}
-                                <span class="badge bg-secondary">{{ tech.name }}</span>
+                            <span class="badge rounded-pill bg-secondary me-1 mt-1">{{ tech.name }}</span>
                             {% endfor %}
-                        </p>
+                        </div>
                         {% endif %}
                     </div>
-                    <div class="card-footer d-flex justify-content-between align-items-center">
+
+                    <div class="card-footer bg-light d-flex justify-content-between align-items-center rounded-bottom-4">
                         <small class="text-muted">{{ project.date_created }}</small>
-                        <div>
-                            <a href="{{ project.github_link }}" target="_blank" class="btn btn-sm btn-outline-dark me-2">GitHub</a>
+                        <div class="d-flex gap-2">
+                            <a href="{{ project.github_link }}" target="_blank" class="btn btn-sm btn-outline-dark">
+                                <i class="bi bi-github"></i> GitHub
+                            </a>
                             {% if project.live_link %}
-                            <a href="{{ project.live_link }}" target="_blank" class="btn btn-sm btn-outline-success">Live</a>
+                            <a href="{{ project.live_link }}" target="_blank" class="btn btn-sm btn-outline-success">
+                                🌐 Live
+                            </a>
                             {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
             {% empty %}
-            <p class="text-muted text-center">No projects added yet.</p>
+            <div class="col-12">
+                <p class="text-muted text-center">No projects added yet.</p>
+            </div>
             {% endfor %}
         </div>
     </div>

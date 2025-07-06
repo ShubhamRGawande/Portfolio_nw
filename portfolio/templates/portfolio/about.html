@@ -6,27 +6,55 @@
 {% block content %}
 <section id="about" class="py-5 mt-5">
     <div class="container">
-        <h2 class="text-center mb-4">About Me</h2>
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <img src="{% static 'images/mine.jpg' %}" alt="Shubham Gawande" class="img-fluid rounded shadow">
+        <h2 class="text-center mb-4 fw-bold">👨‍💻 About <span class="text-primary">Me</span></h2>
+        <p class="text-center text-muted mb-5">
+            Get to know more about my background, interests, and goals as a developer.
+        </p>
+
+        <div class="row align-items-center g-4">
+            <!-- Image Section -->
+            <div class="col-md-5 text-center">
+                <img src="{% static 'images/mine.jpg' %}" alt="Shubham Gawande"
+                    class="img-fluid rounded-circle shadow-lg border border-3 border-primary" style="max-width: 300px;">
             </div>
-            <div class="col-md-6">
-                <h3 class="fw-bold">I'm Shubham Gawande</h3>
-                <p class="mt-3">
-                    A self-motivated and passionate final-year <strong>BCA student</strong> from Malkapur, currently living in <strong>Karve Nagar, Pune</strong>. I'm pursuing a <strong>Python Full Stack Development</strong> course at <strong>Giri’s Tech Hub</strong>, where I’m building solid skills in HTML, CSS, JavaScript, Python, Django, Bootstrap, and MySQL.
+
+            <!-- Info Section -->
+            <div class="col-md-7">
+                <h3 class="fw-bold mb-3">👋 Hi, I'm Shubham Gawande</h3>
+                <p class="lead text-muted">
+                    A self-motivated and passionate <strong>BCA final-year student</strong> from <strong>Malkapur</strong>, currently based in <strong>Karve Nagar, Pune</strong>. I am pursuing a <strong>Python Full Stack Development</strong> course at <strong>Giri’s Tech Hub</strong>, gaining hands-on experience with HTML, CSS, JavaScript, Django, and MySQL.
                 </p>
                 <p>
-                    I am a strong believer in practical learning and enjoy solving real-world problems through technology. My goal is to become a professional full stack developer and work with companies that value innovation, growth, and collaboration.
+                    I believe in building practical solutions and enjoy solving real-world problems using technology. My career goal is to work as a <strong>Full Stack Developer</strong> in an innovative and growth-focused environment.
                 </p>
-                <ul class="list-unstyled">
-                    <li><strong>📍 Location:</strong> Pune, Maharashtra</li>
-                    <li><strong>🎓 Education:</strong> BCA (Final Year)</li>
-                    <li><strong>💻 Interests:</strong> Full Stack Development, DevOps, Cybersecurity</li>
-                    <li><strong>📧 Email:</strong> your.email@example.com</li>
-                    <li><strong>📱 Phone:</strong> +91-XXXXXXXXXX</li>
-                </ul>
-                <a href="{% url 'home' %}" class="btn btn-primary mt-3">Back to Home</a>
+
+                <!-- Personal Details -->
+                <div class="card shadow-sm rounded-4 border-0 p-3 mb-3">
+                    <ul class="list-unstyled mb-0">
+                        <li><i class="bi bi-geo-alt-fill text-danger me-2"></i><strong>Location:</strong> Pune, Maharashtra</li>
+                        <li><i class="bi bi-mortarboard-fill text-success me-2"></i><strong>Education:</strong> BCA (Final Year)</li>
+                        <li><i class="bi bi-code-slash text-primary me-2"></i><strong>Interests:</strong> Full Stack Development, DevOps, Cybersecurity</li>
+                        <li><i class="bi bi-envelope-fill text-warning me-2"></i><strong>Email:</strong> shubhamrg866@gmail.com</li>
+                        <li><i class="bi bi-phone-fill text-info me-2"></i><strong>Phone:</strong> +91-7218387621</li>
+                    </ul>
+                </div>
+
+                <!-- Social Links -->
+                <div class="d-flex gap-3 mt-3">
+                    <a href="https://github.com/yourusername" target="_blank" class="btn btn-dark rounded-pill">
+                        <i class="bi bi-github me-1"></i> GitHub
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" class="btn btn-primary rounded-pill">
+                        <i class="bi bi-linkedin me-1"></i> LinkedIn
+                    </a>
+                    <a href="mailto:shubhamrg866@gmail.com" class="btn btn-outline-secondary rounded-pill">
+                        <i class="bi bi-envelope me-1"></i> Email
+                    </a>
+                </div>
+
+                <a href="{% url 'home' %}" class="btn btn-outline-primary mt-4">
+                    <i class="bi bi-arrow-left-circle me-1"></i> Back to Home
+                </a>
             </div>
         </div>
     </div>

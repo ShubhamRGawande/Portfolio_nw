@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.conf import settings
-from .models import Skill, Project, Technology, ContactMessage
+from .models import Skill, Project, Technology, ContactMessage, LearningResource
 
 
 def home(request):
@@ -44,6 +44,7 @@ def projects(request):
     }
     return render(request, 'portfolio/projects.html', context)
 
+
 def skills(request):
     all_skills = Skill.objects.all().order_by('order')
     context = {
@@ -51,6 +52,10 @@ def skills(request):
     }
     return render(request, 'portfolio/skills.html', context)
 
+
+def learning(request):
+    resources = LearningResource.objects.all()
+    return render(request, 'portfolio/learning.html', {'resources': resources})
 
 
 def project_detail(request, pk):

@@ -1,33 +1,62 @@
 {% extends 'portfolio/base.html' %}
+{% load static %}
 {% block title %}Skills - Shubham Gawande{% endblock %}
 
 {% block content %}
 <section id="skills" class="py-5 mt-5">
     <div class="container">
-        <h2 class="text-center mb-4">My Skills</h2>
-        <div class="row">
+        <h2 class="text-center mb-4 fw-bold">
+            🛠 My <span class="text-primary">Skills</span>
+        </h2>
+        <p class="text-center text-muted mb-5">
+            A showcase of technologies and tools I’ve mastered in Full Stack Development.
+        </p>
+
+        <div class="row g-4">
             {% for skill in skills %}
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm p-3">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h5 class="mb-0">{{ skill.name }}</h5>
-                        <small class="text-muted">{{ skill.get_category_display }}</small>
+            <div class="col-md-6 col-lg-4">
+                <div class="card border-0 shadow-sm rounded-4 p-3 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-semibold mb-0">{{ skill.name }}</h5>
+                        <!-- Category icon -->
+                        <div>
+                            {% if skill.category == 'language' %}
+                                <i class="bi bi-code-slash text-primary fs-4" title="Programming Language"></i>
+                            {% elif skill.category == 'framework' %}
+                                <i class="bi bi-layers text-success fs-4" title="Framework"></i>
+                            {% elif skill.category == 'frontend' %}
+                                <i class="bi bi-palette text-danger fs-4" title="Frontend"></i>
+                            {% elif skill.category == 'backend' %}
+                                <i class="bi bi-database text-warning fs-4" title="Backend"></i>
+                            {% elif skill.category == 'tool' %}
+                                <i class="bi bi-gear text-info fs-4" title="Tool"></i>
+                            {% else %}
+                                <i class="bi bi-lightbulb text-muted fs-4" title="Other"></i>
+                            {% endif %}
+                        </div>
                     </div>
-                    <div class="progress" style="height: 20px;">
-                        <div class="progress-bar
+
+                    <!-- Progress bar with animation -->
+                    <div class="progress" style="height: 18px;">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated
                             {% if skill.category == 'language' %}bg-primary
                             {% elif skill.category == 'framework' %}bg-success
-                            {% elif skill.category == 'tool' %}bg-warning
-                            {% else %}bg-info{% endif %}"
+                            {% elif skill.category == 'frontend' %}bg-danger
+                            {% elif skill.category == 'backend' %}bg-warning
+                            {% elif skill.category == 'tool' %}bg-info
+                            {% else %}bg-secondary{% endif %}"
                             role="progressbar"
                             style="width: {{ skill.percentage }}%;"
                             aria-valuenow="{{ skill.percentage }}" aria-valuemin="0" aria-valuemax="100">
+                            {{ skill.percentage }}%
                         </div>
                     </div>
                 </div>
             </div>
             {% empty %}
-            <p class="text-muted text-center">No skills added yet.</p>
+            <div class="col-12">
+                <p class="text-muted text-center">No skills added yet.</p>
+            </div>
             {% endfor %}
         </div>
     </div>

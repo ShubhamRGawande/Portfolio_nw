@@ -1,80 +1,119 @@
 {% extends 'portfolio/base.html' %}
 {% load static %}
 
+{% block title %}Shubham Gawande - Full Stack Developer{% endblock %}
+
 {% block content %}
 <!-- Hero Section -->
 <section id="home" class="hero-section vh-100 d-flex align-items-center">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-3 fw-bold mb-4">Hi, I'm <span class="text-primary">SHUBHAM</span></h1>
-                <h2 class="mb-4">Aspiring Python Full Stack Developer</h2>
-                <p class="lead mb-4">
-                    I’m a BCA final-year student from Malkapur, currently based in Karve Nagar, Pune. Passionate about web development, I’m pursuing a Python Full Stack Development course at Giri’s Tech Hub. I specialize in HTML, CSS, JavaScript, Python, Django, and MySQL.
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">Hi, I'm <span class="text-primary">Shubham</span></h1>
+                <h2 class="h4 text-muted mb-3 animate__animated animate__fadeInUp">Entry-Level Full Stack Developer (Python/Django)</h2>
+                <p class="lead mb-4 animate__animated animate__fadeIn">
+                    To obtain a challenging position as a Python Full Stack Developer where I can apply my technical skills in Python, Django, HTML, CSS, JavaScript, and MySQL to develop innovative and scalable web solutions while continuously growing and contributing to organizational success.
                 </p>
-                <a href="#contact" class="btn btn-primary btn-lg me-2">Hire Me</a>
-                <a href="#projects" class="btn btn-outline-primary btn-lg">View Work</a>
+                <a href="{% url 'contact' %}" class="btn btn-primary btn-lg me-2 animate__animated animate__fadeInLeft">Hire Me</a>
+                <a href="{% url 'projects' %}" class="btn btn-outline-primary btn-lg animate__animated animate__fadeInRight">View Work</a>
             </div>
-            <div class="col-lg-6">
-                <img src="{% static 'images/hero-image.jpg' %}" alt="Shubham Gawande" class="img-fluid rounded-circle">
+            <div class="col-lg-6 text-center">
+                <img src="{% static 'images/hero-image.jpg' %}" alt="Shubham Gawande" class="img-fluid rounded-circle shadow-lg animate__animated animate__zoomIn" style="max-width: 350px;">
             </div>
         </div>
     </div>
 </section>
-<!-- About Section for Homepage -->
+
+<!-- About Section -->
 <section id="about" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="text-center mb-4">About Me</h2>
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <img src="{% static 'images/mine.jpg' %}" alt="Shubham Gawande" class="img-fluid rounded shadow">
-      </div>
-      <div class="col-md-6">
-        <h3 class="fw-bold">I'm Shubham Gawande</h3>
-        <p class="mt-3">
-          A self-motivated and passionate final-year <strong>BCA student</strong> from Malkapur, currently living in <strong>Karve Nagar, Pune</strong>. I'm pursuing a <strong>Python Full Stack Development</strong> course at <strong>Giri’s Tech Hub</strong>, where I’m building solid skills in HTML, CSS, JavaScript, Python, Django, Bootstrap, and MySQL.
-        </p>
-        <p>
-          I believe in practical learning and love solving real-world problems through technology. My goal is to become a full stack developer and work with companies that value innovation and growth.
-        </p>
-        <ul class="list-unstyled">
-          <li><strong>📍 Location:</strong> Pune, Maharashtra</li>
-          <li><strong>🎓 Education:</strong> BCA (Final Year)</li>
-          <li><strong>💻 Interests:</strong> Full Stack Development, DevOps, Cybersecurity</li>
-          <li><strong>📧 Email:</strong> your.email@example.com</li>
-          <li><strong>📱 Phone:</strong> +91-XXXXXXXXXX</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Skills Section for Homepage -->
-<section id="skills" class="py-5 bg-white">
-  <div class="container">
-    <h2 class="text-center mb-4">My Skills</h2>
-    <div class="row">
-      {% for skill in skills %}
-      <div class="col-md-6 mb-4">
-        <h5>{{ skill.name }}</h5>
-        <div class="progress">
-          <div class="progress-bar" role="progressbar"
-               style="width: {{ skill.percentage }}%;"
-               aria-valuenow="{{ skill.percentage }}"
-               aria-valuemin="0"
-               aria-valuemax="100">
-            {{ skill.percentage }}%
-          </div>
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">About <span class="text-primary">Me</span></h2>
+        <div class="row align-items-center">
+            <div class="col-md-5 text-center">
+                <img src="{% static 'images/mine.jpg' %}" alt="Shubham Gawande" class="img-fluid rounded shadow-lg border border-primary" style="max-width: 300px;">
+            </div>
+            <div class="col-md-7">
+                <p class="lead">
+                    A self-driven and detail-oriented <strong>BCA graduate</strong> from Malkapur, currently based in <strong>Karve Nagar, Pune</strong>. Completed a comprehensive <strong>Python Full Stack Development</strong> course at <strong>Giri’s Tech Hub</strong>.
+                </p>
+                <p>
+                    I enjoy solving real-world problems through clean, efficient code and am seeking an opportunity to grow as a developer in an organization that values innovation and collaboration.
+                </p>
+                <ul class="list-unstyled">
+                    <li><strong>📍 Location:</strong> Pune, Maharashtra</li>
+                    <li><strong>🎓 Education:</strong> Bachelor of Computer Applications (BCA)</li>
+                    <li><strong>💻 Skills & Interests:</strong> Full Stack Web Development</li>
+                    <li><strong>📧 Email:</strong> shubhamrg866@gmail.com</li>
+                    <li><strong>📱 Phone:</strong> +91-7218387621</li>
+                </ul>
+            </div>
         </div>
-      </div>
-      {% empty %}
-      <div class="col-12">
-        <p class="text-muted text-center">No skills added yet.</p>
-      </div>
-      {% endfor %}
     </div>
-  </div>
 </section>
 
+<!-- Skills Section -->
+<section id="skills" class="py-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">💻 My <span class="text-primary">Skills</span></h2>
+        <div class="row">
+            {% for skill in skills %}
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h5 class="mb-0">{{ skill.name }}</h5>
+                        <small class="text-muted">{{ skill.get_category_display }}</small>
+                    </div>
+                    <div class="progress" style="height: 18px;">
+                        <div class="progress-bar
+                            {% if skill.category == 'language' %}bg-primary
+                            {% elif skill.category == 'framework' %}bg-success
+                            {% elif skill.category == 'tool' %}bg-warning
+                            {% else %}bg-info{% endif %}"
+                            role="progressbar"
+                            style="width: {{ skill.percentage }}%;"
+                            aria-valuenow="{{ skill.percentage }}" aria-valuemin="0" aria-valuemax="100">
+                            {{ skill.percentage }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">No skills added yet.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
+<!-- Learning Path Section -->
+<section id="learning" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-4">📚 My <span class="text-primary">Learning Path</span></h2>
+        <p class="text-center text-muted mb-5">A few handpicked resources from my full-stack journey.</p>
+        <div class="row">
+            {% for resource in resources|slice:":3" %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow hover-shadow-lg">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ resource.title }}</h5>
+                        <p class="card-text">{{ resource.description|truncatechars:100 }}</p>
+                        <a href="{{ resource.link }}" target="_blank" class="btn btn-outline-primary w-100">View Resource</a>
+                    </div>
+                    <div class="card-footer text-muted small text-center">
+                        {{ resource.get_category_display }} • {{ resource.date_added }}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">No learning resources added yet.</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'learning' %}" class="btn btn-primary btn-lg">View All Resources</a>
+        </div>
+    </div>
+</section>
 {% endblock %}

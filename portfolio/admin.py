@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Skill, Technology, Project, ContactMessage
+from .models import Skill, Technology, Project, ContactMessage, LearningResource
 
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
@@ -20,6 +20,14 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ('title', 'description')
     filter_horizontal = ('technologies',)
     date_hierarchy = 'date_created'
+
+@admin.register(LearningResource)
+class LearningResourceAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'date_added', 'featured')
+    list_filter = ('category', 'featured', 'date_added')
+    search_fields = ('title', 'description', 'link')
+    ordering = ('-date_added',)
+    list_editable = ('featured',)
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
